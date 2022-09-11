@@ -22,7 +22,7 @@ stage('ExecuteSonarReport'){
 sh "${mavenHome}/bin/mvn clean sonar:sonar"
 }  
 stage('UploadArtifactoryIntoArtifactoryRepo'){
-sh "${mavenHome}/bin/mvn clean deploye"
+sh "${mavenHome}/bin/mvn clean deploy"
 } 
 stage('DeployappIntoTomcatServer'){
 sshagent(['c4dc6c3f-c17d-46e9-90ed-010c0837570d']) {
@@ -69,7 +69,7 @@ def SlackNotifications(String buildStatus = 'STARTED') {
   }
 
   // Send notifications
-  slackSend (color: colorCode, message: summary, "#walmart")
+  slackSend (color: colorCode, message: summary,"#walmart")
 }
                                                                                                               
   
