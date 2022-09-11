@@ -22,7 +22,7 @@ stage('ExecuteSonarReport'){
 sh "${mavenHome}/bin/mvn clean sonar:sonar"
 }  
 stage('UploadArtifactoryIntoArtifactoryRepo'){
-sh "${mavenHome}/bin/mvn clean deploy"
+sh "${mavenHome}/bin/mvn clean deploye"
 } 
 stage('DeployappIntoTomcatServer'){
 sshagent(['c4dc6c3f-c17d-46e9-90ed-010c0837570d']) {
