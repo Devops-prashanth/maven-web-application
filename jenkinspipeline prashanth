@@ -10,6 +10,7 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 daysToKeepStr: '', numToKeepStr: '4')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])]) 
 
 try{ 
+SlackNotifications('STARTED')
 stage('CheckOutCode'){
 git branch: 'development', credentialsId: 'fac5b04e-eaec-4dcf-9246-d54105b96829', url: 'https://github.com/Devops-prashanth/maven-web-application.git'
 }
@@ -68,7 +69,7 @@ def SlackNotifications(String buildStatus = 'STARTED') {
   }
 
   // Send notifications
-  slackSend (color: colorCode, message: summary)
+  slackSend (color: colorCode, message: summary,)
 }
                                                                                                               
   
